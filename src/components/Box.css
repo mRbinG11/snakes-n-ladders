@@ -1,0 +1,38 @@
+.box {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 1px solid lightgrey;
+    border-radius: 11px;
+}
+
+.snake {
+    background-color: lightcoral;
+}
+
+.ladder {
+    background-color: lightgreen;
+}
+
+.values {
+    display: flex;
+    justify-content: space-between;
+}
+
+.endValue {
+    border: 1px solid lightgrey;
+    border-radius: 11px;
+}
+
+.players {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.player:nth-child(1) {
+    background-color: lightblue;
+}
+
+.player:nth-child(2) {
+    background-color: lightpink;
+}
