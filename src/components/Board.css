@@ -1,0 +1,42 @@
+.card {
+    padding: 2rem 4rem;
+    border-radius: 11px;
+    box-shadow: 5px 5px 10px #888888;
+    display: flex;
+    flex-direction: column;
+}
+
+.subtitle {
+    display: flex;
+    justify-content: space-between;
+}
+
+.left-subtitle {
+    display: flex;
+    justify-content: flex-start;
+    gap: 0.25rem;
+}
+
+.left-label {
+    margin: 0;
+}
+
+.right-subtitle {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.25rem;
+}
+
+.board {
+    display: grid;
+    grid-template-columns: repeat(10, 4rem);
+    grid-template-rows: repeat(10, 4rem);
+    gap: 0.25rem;
+    margin: 1rem;
+}
+
+.btns {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
