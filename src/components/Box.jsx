@@ -1,13 +1,15 @@
 import React from "react";
 import "./Box.css";
 
-const Box = (value, type = "normal", endValue = value, players = []) => {
+const Box = ({ value, type = "normal", endValue = value, players = [] }) => {
   return (
     <div className={`box ` + type}>
       <div className="values">
         <p className="value">{value}</p>
         {endValue !== value ? (
-          <p className="endValue">{`->` + endValue}</p>
+          <p className="endValue">
+            {(type === "snake" ? "S " : "L ") + endValue}
+          </p>
         ) : (
           <></>
         )}
@@ -15,7 +17,9 @@ const Box = (value, type = "normal", endValue = value, players = []) => {
       {players.length ? (
         <div className="players">
           {players.map((player) => (
-            <p className="player">{player}</p>
+            <p key={player} className={player}>
+              {player}
+            </p>
           ))}
         </div>
       ) : (
@@ -25,4 +29,5 @@ const Box = (value, type = "normal", endValue = value, players = []) => {
   );
 };
 
-export default React.memo(Box);
+// export default React.memo(Box);
+export default Box;
