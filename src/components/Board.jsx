@@ -137,7 +137,7 @@ export const Board = () => {
 
   return (
     <div className="card">
-      <h1>Snakes & Ladders</h1>
+      <h1>Snake & Ladders</h1>
       <div className="subtitle">
         <div className="left-subtitle">
           {gameOn ? (
@@ -180,6 +180,10 @@ export const Board = () => {
           Reset
         </button>
       </div>
+      <p>
+        Exact 100 is required to win. Land on a ladder to climb up, a snake to
+        slide down.
+      </p>
     </div>
   );
 };
