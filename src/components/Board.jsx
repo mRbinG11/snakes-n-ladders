@@ -4,49 +4,50 @@ import "./Board.css";
 import Box from "./Box";
 
 export const Board = () => {
-  const createPosition = (value, type, endValue, players) => ({
+  const createPosition = (value, type, endValue, P1, P2) => ({
     value,
     type,
     endValue,
-    players,
+    P1,
+    P2,
   });
   const [positions, setPositions] = useState(
     Array.from({ length: 100 }, (_, i) => {
       switch (i + 1) {
         case 1:
-          return createPosition(i + 1, "normal", i + 1, ["P1", "P2"]);
+          return createPosition(i + 1, "normal", i + 1, true, true);
         case 4:
-          return createPosition(i + 1, "ladder", 14, []);
+          return createPosition(i + 1, "ladder", 14, false, false);
         case 9:
-          return createPosition(i + 1, "ladder", 21, []);
+          return createPosition(i + 1, "ladder", 21, false, false);
         case 17:
-          return createPosition(i + 1, "snake", 7, []);
+          return createPosition(i + 1, "snake", 7, false, false);
         case 20:
-          return createPosition(i + 1, "ladder", 38, []);
+          return createPosition(i + 1, "ladder", 38, false, false);
         case 28:
-          return createPosition(i + 1, "ladder", 44, []);
+          return createPosition(i + 1, "ladder", 44, false, false);
         case 40:
-          return createPosition(i + 1, "ladder", 51, []);
+          return createPosition(i + 1, "ladder", 51, false, false);
         case 54:
-          return createPosition(i + 1, "snake", 34, []);
+          return createPosition(i + 1, "snake", 34, false, false);
         case 62:
-          return createPosition(i + 1, "snake", 39, []);
+          return createPosition(i + 1, "snake", 39, false, false);
         case 63:
-          return createPosition(i + 1, "ladder", 81, []);
+          return createPosition(i + 1, "ladder", 81, false, false);
         case 64:
-          return createPosition(i + 1, "snake", 60, []);
+          return createPosition(i + 1, "snake", 60, false, false);
         case 71:
-          return createPosition(i + 1, "ladder", 91, []);
+          return createPosition(i + 1, "ladder", 91, false, false);
         case 87:
-          return createPosition(i + 1, "snake", 24, []);
+          return createPosition(i + 1, "snake", 24, false, false);
         case 93:
-          return createPosition(i + 1, "snake", 73, []);
+          return createPosition(i + 1, "snake", 73, false, false);
         case 95:
-          return createPosition(i + 1, "snake", 75, []);
+          return createPosition(i + 1, "snake", 75, false, false);
         case 99:
-          return createPosition(i + 1, "snake", 78, []);
+          return createPosition(i + 1, "snake", 78, false, false);
         default:
-          return createPosition(i + 1, "normal", i + 1, []);
+          return createPosition(i + 1, "normal", i + 1, false, false);
       }
     }),
   );
@@ -63,16 +64,15 @@ export const Board = () => {
     let currVal = 0,
       endVal = 0;
     const newPositions = positions.map((position) => {
-      if (position.players.includes(turn)) {
+      if (position[turn]) {
         currVal = position.value;
-        const index = position.players.indexOf(turn);
-        position.players.splice(index, 1);
+        position[turn] = false;
         return position;
       } else if (currVal + roll === position.value) endVal = position.endValue;
       else if (currVal + roll > 100) endVal = 100;
       return position;
     });
-    if (endVal) newPositions[endVal - 1].players.push(turn);
+    if (endVal) newPositions[endVal - 1][turn] = true;
     setPositions(newPositions);
 
     if (endVal === 100) setGameOn(false);
@@ -89,39 +89,39 @@ export const Board = () => {
       Array.from({ length: 100 }, (_, i) => {
         switch (i + 1) {
           case 1:
-            return createPosition(i + 1, "normal", i + 1, ["P1", "P2"]);
+            return createPosition(i + 1, "normal", i + 1, true, true);
           case 4:
-            return createPosition(i + 1, "ladder", 14, []);
+            return createPosition(i + 1, "ladder", 14, false, false);
           case 9:
-            return createPosition(i + 1, "ladder", 21, []);
+            return createPosition(i + 1, "ladder", 21, false, false);
           case 17:
-            return createPosition(i + 1, "snake", 7, []);
+            return createPosition(i + 1, "snake", 7, false, false);
           case 20:
-            return createPosition(i + 1, "ladder", 38, []);
+            return createPosition(i + 1, "ladder", 38, false, false);
           case 28:
-            return createPosition(i + 1, "ladder", 44, []);
+            return createPosition(i + 1, "ladder", 44, false, false);
           case 40:
-            return createPosition(i + 1, "ladder", 51, []);
+            return createPosition(i + 1, "ladder", 51, false, false);
           case 54:
-            return createPosition(i + 1, "snake", 34, []);
+            return createPosition(i + 1, "snake", 34, false, false);
           case 62:
-            return createPosition(i + 1, "snake", 39, []);
+            return createPosition(i + 1, "snake", 39, false, false);
           case 63:
-            return createPosition(i + 1, "ladder", 81, []);
+            return createPosition(i + 1, "ladder", 81, false, false);
           case 64:
-            return createPosition(i + 1, "snake", 60, []);
+            return createPosition(i + 1, "snake", 60, false, false);
           case 71:
-            return createPosition(i + 1, "ladder", 91, []);
+            return createPosition(i + 1, "ladder", 91, false, false);
           case 87:
-            return createPosition(i + 1, "snake", 24, []);
+            return createPosition(i + 1, "snake", 24, false, false);
           case 93:
-            return createPosition(i + 1, "snake", 73, []);
+            return createPosition(i + 1, "snake", 73, false, false);
           case 95:
-            return createPosition(i + 1, "snake", 75, []);
+            return createPosition(i + 1, "snake", 75, false, false);
           case 99:
-            return createPosition(i + 1, "snake", 78, []);
+            return createPosition(i + 1, "snake", 78, false, false);
           default:
-            return createPosition(i + 1, "normal", i + 1, []);
+            return createPosition(i + 1, "normal", i + 1, false, false);
         }
       }),
     );
@@ -166,7 +166,8 @@ export const Board = () => {
               value={pos.value}
               type={pos.type}
               endValue={pos.endValue}
-              players={pos.players}
+              P1={pos.P1}
+              P2={pos.P2}
             />
           );
         })}
@@ -175,7 +176,7 @@ export const Board = () => {
         <button onClick={rollDice} disabled={!gameOn}>
           Roll Dice
         </button>
-        <button onClick={reset} disabled={positions[0].players.length == 2}>
+        <button onClick={reset} disabled={positions[0].P1 || positions[0].P2}>
           Reset
         </button>
       </div>

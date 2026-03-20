@@ -1,7 +1,13 @@
 import React from "react";
 import "./Box.css";
 
-const Box = ({ value, type = "normal", endValue = value, players = [] }) => {
+const Box = ({
+  value,
+  type = "normal",
+  endValue = value,
+  P1 = false,
+  P2 = false,
+}) => {
   return (
     <div className={`box ` + type}>
       <div className="values">
@@ -14,13 +20,10 @@ const Box = ({ value, type = "normal", endValue = value, players = [] }) => {
           <></>
         )}
       </div>
-      {players.length ? (
+      {P1 || P2 ? (
         <div className="players">
-          {players.map((player) => (
-            <p key={player} className={player}>
-              {player}
-            </p>
-          ))}
+          {P1 && <p className="P1">P1</p>}
+          {P2 && <p className="P2">P2</p>}
         </div>
       ) : (
         <></>
@@ -29,5 +32,4 @@ const Box = ({ value, type = "normal", endValue = value, players = [] }) => {
   );
 };
 
-// export default React.memo(Box);
-export default Box;
+export default React.memo(Box);
